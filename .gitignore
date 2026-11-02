@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.log
+
+# Dữ liệu và mô hình lớn: tải/huấn luyện lại bằng step1-step3 (xem README)
+data/
+models/
+
+# Kết quả chạy (số liệu, hình): sinh lại bằng step4 / make_report_figures; chỉ giữ thư mục
+reports/*
+!reports/.gitkeep
+
+# Bộ dựng báo cáo Word: chứa nội dung bài nộp cá nhân và logo trường nên không công khai
+scripts/build_report.py
+scripts/report_docx.py
+scripts/update_fields.ps1
+scripts/scheduled_eval.ps1
+assets/report/
+*.docx

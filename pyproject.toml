@@ -1,0 +1,10 @@
+[tool.ruff]
+line-length = 140
+extend-exclude = ["data", "models", ".venv"]
+
+[tool.ruff.lint]
+select = ["E9", "F"]   # lỗi cú pháp và lỗi pyflakes (import thừa, tên chưa định nghĩa...)
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

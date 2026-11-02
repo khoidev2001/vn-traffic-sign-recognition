@@ -1,0 +1,83 @@
+﻿id,name_en,name_vi,group
+0,No Entry,Cấm đi ngược chiều,cam
+1,Turn Right Only,Đi về bên phải,hieu_lenh
+2,Speed limit 40hm/h,Giới hạn tốc độ 40km/h,cam
+3,No Trucks and Bus,Cấm xe tải và buýt,cam
+4,No Trucks,Cấm xe tải,cam
+5,Low Clearance,Cảnh báo giới hạn chiều cao,nguy_hiem
+6,No Cars,Cấm ô tô,cam
+7,Danger,Cảnh báo nguy hiểm,nguy_hiem
+8,Slown Down,Giảm tốc độ,nguy_hiem
+9,Double curve first to right,Nhiều chỗ ngoặt liên tiếp,nguy_hiem
+10,Obstacle on the Road,Cảnh báo chướng ngại vật phía trước,nguy_hiem
+11,Road with Surveillance Camera,Đường có camera giám sát,chi_dan
+12,Speed limit 60hm/h,Giới hạn tốc độ 60km/h,cam
+13,No Moto,Cấm mô tô xe máy,cam
+14,Lane Allocation,Biển phân làn,hieu_lenh
+15,Height Limit,Biển Cấm Hạn chế chiều cao,cam
+16,No Horns,Cấm còi,cam
+17,No Left Turn,Cấm rẽ trái,cam
+18,No Right Turn,Cấm rẽ phải,cam
+19,No U-Turn,Cấm quay đầu,cam
+20,No U-Turn and No Left Turn,Cấm quay đầu và rẽ trái,cam
+21,No U-Turn and No Right Turn,Cấm quay đầu và rẽ phải,cam
+22,Traffic light ahead,Giao nhau với đèn giao thông,nguy_hiem
+23,No Stopping & No Parking,"Cấm dừng, đỗ xe",cam
+24,No Parking,Cấm đỗ xe,cam
+25,No Straight and Right Turn,Cấm đi thẳng và rẽ phải,cam
+26,No Left or Right Turn,Cấm rẽ trái và phải,cam
+27,Sharp Left Turn,Cua gấp trái,nguy_hiem
+28,Sharp Right Turn,Cua gấp phải,nguy_hiem
+29,Intersection with a Minor Road,Giao nhau với đường không ưu tiên,nguy_hiem
+30,Intersection with Equal Roads,Giao nhau cùng cấp,nguy_hiem
+31,No Moto Turn Left,Cấm xe máy rẽ phải,cam
+32,Intersection with a Priority Road,Giao nhau với đường ưu tiên,nguy_hiem
+33,Pedestrian Lane,Đường dành cho người đi bộ,hieu_lenh
+34,Narrow Road Left Side,Đường hẹp bên trái,nguy_hiem
+35,Narrow Road Right Side,Đường hẹp bên phải,nguy_hiem
+36,Narrow road both sides,Đường hẹp hai bên,nguy_hiem
+37,No Two or Three-wheeled Vehicles,Cấm xe hai và ba bánh,cam
+38,Speed Bump,Đoạn đường có gờ giảm tốc,nguy_hiem
+39,Speed limit 50hm/h,Giới hạn tốc độ 50km/h,cam
+40,Speed limit 70hm/h,Giới hạn tốc độ 70km/h,cam
+41,Speed limit 80hm/h,Giới hạn tốc độ 80km/h,cam
+42,Level Crossing with Barriers,Giao nhau với đường sắt có rào chắn,nguy_hiem
+43,No U-Turn for Cars,Cấm ô tô quay đầu,cam
+44,No bus,Cấm xe buýt,cam
+45,No Overtaking,Cấm vượt,cam
+46,Children Crossing,Cảnh báo Khu vực có trẽ em,nguy_hiem
+47,Pedestrian Crossing,Cảnh báo Người đi bộ cắt ngang,nguy_hiem
+48,End of all prohibition,Hết tất cả các lệnh cấm,cam
+49,Keep left,Đi về bên trái,hieu_lenh
+50,Road Work Ahead,Công trường đang thi công,nguy_hiem
+51,One way street,Đường một chiều,chi_dan
+52,Turn Left,Rẽ trái,hieu_lenh
+53,Turn Right,Rẽ phải,hieu_lenh
+54,Green Light,Đèn xanh,den_tin_hieu
+55,Red Light,Đèn đỏ,den_tin_hieu
+56,Roundabout,Đi theo vòng xuyến,hieu_lenh
+57,Speed limit 10km/h,Giới hạn tốc độ 10km/h,cam
+58,Speed limit 100km/h,Giới hạn tốc độ 100km/h,cam
+59,Speed limit 110km/h,Giới hạn tốc độ 110km/h,cam
+60,Speed limit 120km/h,Giới hạn tốc độ 120km/h,cam
+61,Speed limit 20km/h,Giới hạn tốc độ 20km/h,cam
+62,Speed limit 30km/h,Giới hạn tốc độ 30km/h,cam
+63,Speed limit 90km/h,Giới hạn tốc độ 90km/h,cam
+64,Stop,Dừng lại,cam
+65,U-Turn Area,Nơi quay đầu xe,chi_dan
+66,No Parking on Odd Days,Cấm đỗ xe vào ngày lẻ,cam
+67,No Parking on Even Days,Cấm đỗ xe vào ngày chẵn,cam
+68,Parking,Chỗ đỗ xe,chi_dan
+69,Bus Stop,Bến xe buýt,chi_dan
+70,Hospital,Bệnh Viện,chi_dan
+71,No U-Turn and Left Turn for Cars,Cấm ô tô quay đầu và rẽ trái,cam
+72,Accident area,Đoạn đường hay xảy ra tai nạn,nguy_hiem
+73,Dual carriageway,Đường đôi,nguy_hiem
+74,No left turn for cars,Cấm ô tô rẽ trái,cam
+75,Steep ascent,Lên dốc nguy hiểm,nguy_hiem
+76,Narrow bridge,Cầu hẹp,nguy_hiem
+77,Uneven road,Đường không bằng phẳng,nguy_hiem
+78,End of 50km/h speed limit,Hết giới hạn tốc độ 50km/h,cam
+79,Residential area,Khu dân cư,chi_dan
+80,sparsely populated area,Khu ít dân cư,chi_dan
+81,Slippery Road,Đường trơn,nguy_hiem

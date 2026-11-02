@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Một lần chạy mới trên cùng nhánh sẽ huỷ lần chạy cũ đang dở
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint (ruff + kiểm tra cú pháp JS)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install ruff
+      - run: ruff check .
+      - name: Kiểm tra cú pháp JavaScript của giao diện
+        run: node --check app/static/app.js
+
+  test:
+    name: Kiểm thử (pytest, PyTorch CPU)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements-ci.txt
+      - name: Cài PyTorch bản CPU
+        run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - name: Cài các thư viện còn lại
+        run: pip install -r requirements-ci.txt
+      - name: Chạy kiểm thử
+        run: pytest -q

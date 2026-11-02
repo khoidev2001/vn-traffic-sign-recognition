@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nhận dạng biển báo giao thông Việt Nam</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <h1>Nhận dạng biển báo giao thông Việt Nam</h1>
+        <p>Đồ án môn Lý thuyết nhận dạng · YOLOv8 + CNN / SVM / KNN</p>
+      </div>
+    </div>
+    <div class="status" id="serverStatus">Đang kết nối máy chủ…</div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="recognize" role="tab">Nhận dạng</button>
+    <button class="tab" data-tab="catalog" role="tab">Danh mục biển báo</button>
+    <button class="tab" data-tab="evaluation" role="tab">Đánh giá mô hình</button>
+    <button class="tab" data-tab="about" role="tab">Về hệ thống</button>
+  </nav>
+
+  <main>
+    <!-- ========== NHẬN DẠNG ========== -->
+    <section class="panel active" id="tab-recognize">
+      <div class="recognize-grid">
+        <div class="stage-col">
+          <div class="toolbar">
+            <div class="segmented" id="sourceSwitch" role="group" aria-label="Nguồn ảnh">
+              <button data-source="camera" class="active">Camera</button>
+              <button data-source="video">Video</button>
+              <button data-source="image">Ảnh</button>
+            </div>
+            <select id="cameraSelect" title="Chọn camera"></select>
+            <button id="startBtn" class="primary">Bật camera</button>
+            <label class="file-btn" id="fileBtn" hidden>
+              <span id="fileBtnText">Chọn tệp…</span>
+              <input type="file" id="fileInput" hidden>
+            </label>
+          </div>
+
+          <div class="stage" id="stage">
+            <video id="video" playsinline muted></video>
+            <img id="photo" alt="" hidden>
+            <canvas id="overlay"></canvas>
+            <div class="stage-empty" id="stageEmpty">
+              <p>Bật camera, chọn video hoặc kéo thả ảnh vào đây</p>
+              <small>Camera trình duyệt chỉ hoạt động trên <b>localhost</b> hoặc <b>https</b></small>
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div><span id="mFps">–</span><small>khung hình/giây</small></div>
+            <div><span id="mMs">–</span><small>ms mỗi khung</small></div>
+            <div><span id="mCount">0</span><small>biển báo trong khung</small></div>
+          </div>
+        </div>
+
+        <aside class="side-col">
+          <div class="card controls">
+            <h2>Thiết lập</h2>
+            <label>Phương pháp nhận dạng
+              <select id="modelSelect">
+                <option value="yolo">YOLOv8 (một giai đoạn)</option>
+                <option value="cnn">YOLOv8 tìm biển + CNN phân loại</option>
+                <option value="svm">YOLOv8 tìm biển + SVM (HOG)</option>
+                <option value="knn">YOLOv8 tìm biển + KNN (HOG)</option>
+              </select>
+            </label>
+            <label>Ngưỡng tin cậy: <b id="confValue">40%</b>
+              <input type="range" id="confRange" min="10" max="90" value="40">
+            </label>
+            <label>Kích thước phân tích
+              <select id="sizeSelect">
+                <option value="480">480 px (nhanh)</option>
+                <option value="640" selected>640 px</option>
+                <option value="960">960 px (biển xa, chậm hơn)</option>
+              </select>
+            </label>
+            <label class="check"><input type="checkbox" id="singleToggle"> Ảnh chỉ chứa một biển báo (hình vẽ / cận cảnh)</label>
+            <label class="check"><input type="checkbox" id="speakToggle"> Đọc to tên biển báo (tiếng Việt)</label>
+          </div>
+
+          <div class="card">
+            <h2>Đang nhận dạng</h2>
+            <ul class="detections" id="detections"><li class="muted">Chưa có biển báo nào</li></ul>
+          </div>
+
+          <div class="card">
+            <h2>Đã gặp <button class="link" id="clearSeen">xoá</button></h2>
+            <ul class="seen" id="seen"><li class="muted">Chưa có lịch sử</li></ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ========== DANH MỤC ========== -->
+    <section class="panel" id="tab-catalog">
+      <div class="catalog-head">
+        <h2>82 lớp biển báo trong bộ dữ liệu</h2>
+        <input type="search" id="catalogSearch" placeholder="Tìm theo tên hoặc số…">
+      </div>
+      <div id="catalog"></div>
+    </section>
+
+    <!-- ========== ĐÁNH GIÁ ========== -->
+    <section class="panel" id="tab-evaluation">
+      <div id="evaluation"><p class="muted">Đang tải số liệu…</p></div>
+    </section>
+
+    <!-- ========== VỀ HỆ THỐNG ========== -->
+    <section class="panel" id="tab-about">
+      <div class="card prose">
+        <h2>Quy trình nhận dạng</h2>
+        <ol class="pipeline">
+          <li><b>Thu hình</b><span>Camera / video / ảnh, thu nhỏ còn tối đa 960 px rồi gửi lên máy chủ.</span></li>
+          <li><b>Phát hiện</b><span>YOLOv8 tìm vị trí các biển báo (khung chữ nhật) trong khung hình.</span></li>
+          <li><b>Cắt &amp; chuẩn hoá</b><span>Cắt vuông quanh biển báo (rộng hơn 20%), đưa về 64×64.</span></li>
+          <li><b>Nhận dạng</b><span>CNN, hoặc SVM/KNN trên đặc trưng HOG + màu HSV (qua PCA), gán 1 trong 82 lớp.</span></li>
+          <li><b>Hiển thị</b><span>Vẽ khung, tên tiếng Việt, độ tin cậy; có thể đọc to cảnh báo.</span></li>
+        </ol>
+        <h2>Dữ liệu</h2>
+        <p>Bộ <i>Vietnam Traffic Sign Detection</i> (Hugging Face, giấy phép CC-BY-4.0): hơn 10.000 ảnh chụp đường phố
+          Việt Nam, nhãn khung theo định dạng YOLO, đã chia sẵn train / val / test.</p>
+        <h2>Lưu ý khi dùng</h2>
+        <ul>
+          <li>Hệ thống phục vụ học tập, <b>không</b> dùng để hỗ trợ lái xe thật.</li>
+          <li>Đèn tín hiệu xanh/đỏ nằm trong bộ dữ liệu nên cũng được nhận dạng.</li>
+          <li>Biển nhỏ/xa/mờ hoặc ngược sáng dễ sai; tăng "Kích thước phân tích" để cải thiện.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

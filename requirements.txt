@@ -1,0 +1,16 @@
+# Cài PyTorch (CUDA) riêng trước:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+numpy
+opencv-python-headless
+scikit-learn>=1.6,<1.11
+joblib
+pandas
+openpyxl
+matplotlib
+ultralytics
+fastapi
+uvicorn
+python-multipart
+scikit-image
+python-docx
+pyyaml

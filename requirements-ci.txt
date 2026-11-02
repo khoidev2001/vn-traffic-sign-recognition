@@ -1,0 +1,11 @@
+# Phụ thuộc tối thiểu để chạy kiểm thử trên CI (không có ultralytics / GPU / dữ liệu / mô hình).
+# PyTorch bản CPU được cài riêng trong workflow.
+numpy
+opencv-python-headless
+scikit-learn>=1.6,<1.11
+scikit-image
+joblib
+matplotlib
+fastapi
+httpx
+pytest
