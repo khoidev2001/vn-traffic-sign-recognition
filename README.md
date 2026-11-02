@@ -96,4 +96,8 @@ CI **không** huấn luyện mô hình và không tải dữ liệu (nặng, c�
 - Bộ dữ liệu: [star092304/Traffic-sign-detection-VietNam](https://huggingface.co/datasets/star092304/Traffic-sign-detection-VietNam),
   giấy phép [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). Các ảnh nhỏ trong `assets/samples/` được cắt từ bộ dữ liệu này.
 - Phát hiện biển báo dùng [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics) (AGPL-3.0).
-- Repo chưa chọn giấy phép cho mã nguồn của đồ án.
+
+## Giấy phép
+
+Mã nguồn của repo theo giấy phép [MIT](LICENSE). Lưu ý: repo chỉ chứa mã của đồ án, **không** chứa Ultralytics; thư viện này theo AGPL-3.0
+nên nếu bạn phân phối hoặc triển khai dịch vụ dùng nó thì phải tuân theo điều khoản AGPL của họ. Dữ liệu và ảnh mẫu theo CC-BY-4.0 (xem trên).
