@@ -68,10 +68,12 @@ Mở <http://localhost:8000>. Camera trình duyệt chỉ cho dùng trên `local
 
 ## Hạn chế đã biết của dữ liệu
 
-- **Lớp 57** ("Giới hạn tốc độ 10km/h") lẫn nhiều biển **40 km/h** → hay nhầm với lớp 2.
+- **Lớp 57** ("Giới hạn tốc độ 10km/h") phần lớn thực ra là biển **40 km/h** (ít nhất 60/100 ảnh train và 7/10 ảnh test),
+  nên kết quả của lớp này không phản ánh khả năng đọc biển 10 km/h.
 - Một số lớp trông giống nhau (vd. lớp 8 "Giảm tốc độ" và lớp 10 "Chướng ngại vật" cùng nền "ĐI CHẬM" ở một số ảnh).
-- Khoảng 11% mẫu test có bản gần như trùng trong train → accuracy tổng lạc quan; bảng đánh giá có thêm cột
-  "Acc (mẫu lạ)" để so sánh.
+- Khoảng 11% mẫu test có bản gần như trùng trong train (độ tương đồng cosine trên 0,99) → accuracy tổng lạc quan.
+  Bảng đánh giá có thêm cột "Acc (mẫu lạ)" với tiêu chí chặt hơn: loại mọi mẫu giống một ảnh train trên mức 0,97,
+  tức khoảng một phần ba tập test.
 - File `train/labels/8380.txt` có một dòng thừa cột, bị bỏ qua khi cắt ảnh.
 - Phần "nhóm" của lớp (cấm/hiệu lệnh/nguy hiểm/chỉ dẫn) trong `assets/classes.csv` do người làm đồ án gán thủ công,
   chỉ dùng để tô màu giao diện; cần đối chiếu QCVN 41:2019/BGTVT nếu đưa vào báo cáo.
